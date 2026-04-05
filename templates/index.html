@@ -1,25 +1,26 @@
-<!DOCTYPE html>
-<html lang="vi">
+<!DOCTYPE html> <!-- Định nghĩa tài liệu HTML5 -->
+<html lang="vi"> <!-- Ngôn ngữ trang là tiếng Việt -->
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quản Lý Nhân Viên</title>
+<meta charset="UTF-8"> <!-- Đặt mã hóa ký tự UTF-8 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Thiết lập khung nhìn cho thiết bị di động -->
+<title>Quản Lý Nhân Viên</title> <!-- Tiêu đề trang hiển thị trên tab trình duyệt -->
 </head>
 <body>
-<h1>DASHBOARD TÍCH HỢP PAYROLL VÀ HUMAN</h1>
-{% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
+<h1>DASHBOARD TÍCH HỢP PAYROLL VÀ HUMAN</h1> <!-- Tiêu đề chính của trang -->
+{% with messages = get_flashed_messages(with_categories=true) %} <!-- Bắt đầu lấy danh sách flash message -->
+  {% if messages %} <!-- Nếu có message thì hiển thị -->
     <ul>
-      {% for category, message in messages %}
-        <li class="{{ category }}">{{ message }}</li>
+      {% for category, message in messages %} <!-- Lặp qua từng message với category -->
+        <li class="{{ category }}">{{ message }}</li> <!-- Hiển thị message với class theo category -->
       {% endfor %}
     </ul>
   {% endif %}
 {% endwith %}
 <nav>
 <ul>
-<li><a href="{{ url_for('them_nhan_vien') }}">Quản lý Hồ sơ Nhân viên</a></li>
-<li><a href="{{ url_for('in_bang_luong') }}">In Bảng Lương</a></li>
+<li><a href="{{ url_for('them_nhan_vien') }}">Quản lý Hồ sơ Nhân viên</a></li> <!-- Link tới route thêm nhân viên -->
+<li><a href="{{ url_for('in_danh_sach') }}">In Danh Sách</a></li> <!-- Link tới route in danh sách -->
+<li><a href="{{ url_for('in_bang_luong') }}">In Bảng Lương</a></li> <!-- Link tới route in bảng lương -->
 </ul>
 </nav>
 </body>

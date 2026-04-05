@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cập Nhật Nhân Viên</title>
+</head>
+<body>
+<h2>Cập Nhật Nhân Viên</h2>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul>
+      {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<form method="POST" action="#">
+  <!-- Nhãn trường Mã NV -->
+  <label>Mã NV:</label>
+  <!-- Trường hiển thị mã nhân viên, chỉ đọc -->
+  <input type="text" name="ma_nv" value="{{ nhan_vien.MaNV }}" readonly><br>
+
+  <!-- Nhãn trường Họ và Tên -->
+  <label>Họ và Tên:</label>
+  <!-- Trường nhập tên nhân viên, bắt buộc -->
+  <input type="text" name="ho_ten" value="{{ nhan_vien.HoTen }}" required><br>
+
+  <!-- Nhãn trường Ngày Sinh -->
+  <label>Ngày Sinh:</label>
+  <!-- Trường chọn ngày sinh từ lịch -->
+  <input type="date" name="ngay_sinh" value="{{ nhan_vien.NgaySinh }}"><br>
+
+  <!-- Nhãn trường Giới Tính -->
+  <label>Giới Tính:</label>
+  <!-- Hộp chọn giới tính với giá trị mặc định theo dữ liệu nhân viên -->
+  <select name="gioi_tinh">
+    <option value="Nam" {% if nhan_vien.GioiTinh == 'Nam' %}selected{% endif %}>Nam</option>
+    <option value="Nữ" {% if nhan_vien.GioiTinh == 'Nữ' %}selected{% endif %}>Nữ</option>
+  </select><br>
+
+  <!-- Nhãn trường Địa Chỉ -->
+  <label>Địa Chỉ:</label>
+  <!-- Trường nhập địa chỉ nhân viên -->
+  <input type="text" name="dia_chi" value="{{ nhan_vien.DiaChi }}"><br>
+
+  <!-- Nhãn trường Số Điện Thoại -->
+  <label>Số Điện Thoại:</label>
+  <!-- Trường nhập số điện thoại nhân viên -->
+  <input type="text" name="so_dien_thoai" value="{{ nhan_vien.SoDienThoai }}"><br>
+
+  <!-- Nhãn trường Email -->
+  <label>Email:</label>
+  <!-- Trường nhập email nhân viên -->
+  <input type="email" name="email" value="{{ nhan_vien.Email }}"><br>
+
+  <!-- Nhãn trường Ngày Vào Làm -->
+  <label>Ngày Vào Làm:</label>
+  <!-- Trường chọn ngày bắt đầu làm việc -->
+  <input type="date" name="ngay_vao_lam" value="{{ nhan_vien.NgayVaoLam }}"><br>
+
+  <!-- Nút submit để gửi form cập nhật -->
+  <button type="submit">Cập Nhật</button>
+</form>
+</body>
+</html>

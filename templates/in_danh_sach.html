@@ -1,0 +1,52 @@
+<!DOCTYPE html> <!-- Định nghĩa tài liệu HTML5 -->
+<html lang="vi"> <!-- Ngôn ngữ trang là tiếng Việt -->
+<head>
+<meta charset="UTF-8"> <!-- Đặt mã hóa ký tự UTF-8 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Thiết lập viewport cho thiết bị di động -->
+<title>In Danh Sách Nhân Viên</title> <!-- Tiêu đề trang hiển thị trên tab trình duyệt -->
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> <!-- Liên kết tới file CSS tĩnh -->
+</head>
+<body>
+<h2>Danh Sách Nhân Viên</h2> <!-- Tiêu đề phụ của trang -->
+
+<table border="1"> <!-- Bảng hiển thị danh sách nhân viên, viền 1px -->
+<tr>
+<th>Mã NV</th> <!-- Cột mã nhân viên -->
+<th>Họ Tên</th> <!-- Cột họ tên nhân viên -->
+<th>Ngày Sinh</th> <!-- Cột ngày sinh nhân viên -->
+<th>Giới Tính</th> <!-- Cột giới tính -->
+<th>Địa Chỉ</th> <!-- Cột địa chỉ -->
+<th>Số Điện Thoại</th> <!-- Cột số điện thoại -->
+<th>Email</th> <!-- Cột email -->
+<th>Ngày Vào Làm</th> <!-- Cột ngày vào làm -->
+<th>Phòng Ban</th> <!-- Cột phòng ban -->
+<th>Chức Vụ</th> <!-- Cột chức vụ -->
+<th>Chức năng</th> <!-- Cột chứa thao tác sửa/xóa -->
+</tr>
+{% for nv in nhan_viens %} <!-- Vòng lặp Jinja qua biến nhan_viens -->
+<tr>
+<td>{{ nv.MaNV }}</td> <!-- Hiển thị mã nhân viên -->
+<td>{{ nv.HoTen }}</td> <!-- Hiển thị họ tên nhân viên -->
+<td>{{ nv.NgaySinh }}</td> <!-- Hiển thị ngày sinh nhân viên -->
+<td>{{ nv.GioiTinh }}</td> <!-- Hiển thị giới tính nhân viên -->
+<td>{{ nv.DiaChi }}</td> <!-- Hiển thị địa chỉ nhân viên -->
+<td>{{ nv.SoDienThoai }}</td> <!-- Hiển thị số điện thoại nhân viên -->
+<td>{{ nv.Email }}</td> <!-- Hiển thị email nhân viên -->
+<td>{{ nv.NgayVaoLam }}</td> <!-- Hiển thị ngày vào làm nhân viên -->
+<td>{{ nv.PhongBan }}</td> <!-- Hiển thị phòng ban nhân viên -->
+<td>{{ nv.ChucVu }}</td> <!-- Hiển thị chức vụ nhân viên -->
+<td>
+<a href="{{ url_for('cap_nhat_nhan_vien', manv=nv.MaNV) }}">Sửa</a> <!-- Link tới route sửa nhân viên -->
+ ||
+<form action="{{ url_for('xoa_nhan_vien', manv=nv.MaNV) }}" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn xóa?');"> <!-- Form xóa với xác nhận -->
+<button type="submit">Xóa</button> <!-- Nút submit để xóa -->
+</form>
+</td>
+</tr>
+{% endfor %} <!-- Kết thúc vòng lặp dữ liệu -->
+</table>
+
+<br>
+<a href="/">Quay lại trang chủ</a> <!-- Link quay về trang chủ -->
+</body>
+</html>

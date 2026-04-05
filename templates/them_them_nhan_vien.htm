@@ -1,54 +1,53 @@
-<!DOCTYPE html>
-<html lang="vi">
+<!DOCTYPE html> <!-- Định nghĩa tài liệu HTML5 -->
+<html lang="vi"> <!-- Ngôn ngữ trang là tiếng Việt -->
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thêm Nhân Viên</title>
+<meta charset="UTF-8"> <!-- Đặt mã hóa ký tự UTF-8 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Thiết lập viewport cho thiết bị di động -->
+<title>Thêm Nhân Viên</title> <!-- Tiêu đề trang hiển thị trên tab trình duyệt -->
 </head>
 <body>
-<h2>Thêm Nhân Viên</h2>
-{% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
+<h2>Thêm Nhân Viên</h2> <!-- Tiêu đề phụ của trang -->
+{% with messages = get_flashed_messages(with_categories=true) %} <!-- Bắt đầu lấy flash message -->
+  {% if messages %} <!-- Nếu có message thì hiển thị -->
     <ul>
-      {% for category, message in messages %}
-        <li class="{{ category }}">{{ message }}</li>
+      {% for category, message in messages %} <!-- Vòng lặp qua các message -->
+        <li class="{{ category }}">{{ message }}</li> <!-- Hiển thị nội dung message và phân loại CSS -->
       {% endfor %}
     </ul>
   {% endif %}
 {% endwith %}
-<form method="POST" action="{{ url_for('them_nhan_vien') }}">
-<label>Họ và Tên:</label>
-<input type="text" name="ho_ten" required><br>
+<form method="POST" action="{{ url_for('them_nhan_vien') }}"> <!-- Form gửi dữ liệu đến route them_nhan_vien -->
+<label>Họ và Tên:</label> <!-- Nhãn cho trường họ và tên -->
+<input type="text" name="ho_ten" required><br> <!-- Trường nhập họ tên, bắt buộc -->
 
-<label>Ngày Sinh:</label>
-<input type="date" name="ngay_sinh"><br>
+<label>Ngày Sinh:</label> <!-- Nhãn ngày sinh -->
+<input type="date" name="ngay_sinh"><br> <!-- Trường chọn ngày sinh -->
 
-<label>Giới Tính:</label>
-<select name="gioi_tinh">
-<option value="Nam">Nam</option>
-<option value="Nữ">Nữ</option>
+<label>Giới Tính:</label> <!-- Nhãn giới tính -->
+<select name="gioi_tinh"> <!-- Hộp chọn giới tính -->
+<option value="Nam">Nam</option> <!-- Giá trị Nam -->
+<option value="Nữ">Nữ</option> <!-- Giá trị Nữ -->
 </select><br>
 
-<label>Địa Chỉ:</label>
-<input type="text" name="dia_chi"><br>
+<label>Địa Chỉ:</label> <!-- Nhãn địa chỉ -->
+<input type="text" name="dia_chi"><br> <!-- Trường nhập địa chỉ -->
 
-<label>Số Điện Thoại:</label>
-<input type="text" name="so_dien_thoai"><br>
+<label>Số Điện Thoại:</label> <!-- Nhãn số điện thoại -->
+<input type="text" name="so_dien_thoai"><br> <!-- Trường nhập số điện thoại -->
 
-<label>Email:</label>
-<input type="email" name="email"><br>
-	
-<label>Ngày Vào Làm:</label>
-<input type="date" name="ngay_vao_lam"><br>
+<label>Email:</label> <!-- Nhãn email -->
+<input type="email" name="email"><br> <!-- Trường nhập email -->
 
+<label>Ngày Vào Làm:</label> <!-- Nhãn ngày vào làm -->
+<input type="date" name="ngay_vao_lam"><br> <!-- Trường chọn ngày vào làm -->
 
-<label>Phòng Ban:</label>
-<input type="text" name="phong_ban"><br>
+<label>Phòng Ban:</label> <!-- Nhãn phòng ban -->
+<input type="text" name="phong_ban"><br> <!-- Trường nhập phòng ban -->
 
-<label>ChucVu:</label>
-<input type="text" name="chuc_vu"><br>
+<label>ChucVu:</label> <!-- Nhãn chức vụ -->
+<input type="text" name="chuc_vu"><br> <!-- Trường nhập chức vụ -->
 
-<button type="submit">Thêm</button>
+<button type="submit">Thêm</button> <!-- Nút gửi form -->
 </form>
 </body>
 </html>

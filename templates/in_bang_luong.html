@@ -1,54 +1,33 @@
 <!DOCTYPE html>
+<!-- Định nghĩa loại tài liệu HTML5 -->
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>In Bảng Lương</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background: #f5f5f5; }
-        h1 { color: #333; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
-        th { background: #007bff; color: #fff; }
-        tr:nth-child(even) { background: #fafafa; }
-        .no-data { margin-top: 20px; color: #555; }
-        .back-link { display: inline-block; margin-top: 20px; padding: 10px 14px; background: #007bff; color: #fff; text-decoration: none; border-radius: 4px; }
-    </style>
+<meta charset="UTF-8"> <!-- Đặt mã hóa ký tự UTF-8 -->
+<title>Bảng Lương Nhân Viên</title> <!-- Tiêu đề trang hiển thị trên tab trình duyệt -->
 </head>
 <body>
-    <h1>In Bảng Lương</h1>
-    {% if nhan_viens %}
-    <table>
-        <thead>
-            <tr>
-                <th>MaNV</th>
-                <th>Họ Tên</th>
-                <th>Tháng/Năm</th>
-                <th>Lương Cơ Bản</th>
-                <th>Phụ Cấp</th>
-                <th>Thưởng</th>
-                <th>Khấu Trừ</th>
-                <th>Lương Thực Nhận</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for nv, luong in nhan_viens %}
-            <tr>
-                <td>{{ nv.MaNV }}</td>
-                <td>{{ nv.HoTen }}</td>
-                <td>{{ luong.ThangNam }}</td>
-                <td>{{ luong.LuongCoBan }}</td>
-                <td>{{ luong.PhuCap }}</td>
-                <td>{{ luong.Thuong }}</td>
-                <td>{{ luong.KhauTru }}</td>
-                <td>{{ luong.LuongThucNhan }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    {% else %}
-    <p class="no-data">Không có dữ liệu bảng lương để hiển thị.</p>
-    {% endif %}
-    <a href="/" class="back-link">Quay về Trang Chủ</a>
+<h2>Bảng Lương Nhân Viên</h2> <!-- Tiêu đề chính của trang -->
+<table border="1"> <!-- Bảng hiển thị dữ liệu và lằn viền 1px -->
+<tr>
+<th>Tên Nhân Viên</th> <!-- Cột tên nhân viên -->
+<th>Tháng</th> <!-- Cột tháng lương -->
+<th>Lương Cơ Bản</th> <!-- Cột lương cơ bản -->
+<th>Phụ Cấp</th> <!-- Cột phụ cấp -->
+<th>Thưởng</th> <!-- Cột thưởng -->
+<th>Khấu Trừ</th> <!-- Cột khấu trừ -->
+<th>Lương Thực Nhận</th> <!-- Cột lương thực nhận -->
+</tr>
+{% for nv, luong in nhan_viens %} <!-- Vòng lặp Jinja qua danh sách nhân viên + lương -->
+<tr>
+<td>{{ nv.HoTen }}</td> <!-- Hiển thị tên nhân viên từ đối tượng nv -->
+<td>{{ luong.ThangNam }}</td> <!-- Hiển thị tháng/năm từ đối tượng lương -->
+<td>{{ luong.LuongCoBan }}</td> <!-- Hiển thị lương cơ bản -->
+<td>{{ luong.PhuCap }}</td> <!-- Hiển thị phụ cấp -->
+<td>{{ luong.Thuong }}</td> <!-- Hiển thị thưởng -->
+<td>{{ luong.KhauTru }}</td> <!-- Hiển thị khấu trừ -->
+<td>{{ luong.LuongThucNhan }}</td> <!-- Hiển thị lương thực nhận -->
+</tr>
+{% endfor %} <!-- Kết thúc vòng lặp dữ liệu -->
+</table>
 </body>
 </html>
