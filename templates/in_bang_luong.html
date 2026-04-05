@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In Bảng Lương</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f5f5f5; }
+        h1 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background: #007bff; color: #fff; }
+        tr:nth-child(even) { background: #fafafa; }
+        .no-data { margin-top: 20px; color: #555; }
+        .back-link { display: inline-block; margin-top: 20px; padding: 10px 14px; background: #007bff; color: #fff; text-decoration: none; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>In Bảng Lương</h1>
+    {% if nhan_viens %}
+    <table>
+        <thead>
+            <tr>
+                <th>MaNV</th>
+                <th>Họ Tên</th>
+                <th>Tháng/Năm</th>
+                <th>Lương Cơ Bản</th>
+                <th>Phụ Cấp</th>
+                <th>Thưởng</th>
+                <th>Khấu Trừ</th>
+                <th>Lương Thực Nhận</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for nv, luong in nhan_viens %}
+            <tr>
+                <td>{{ nv.MaNV }}</td>
+                <td>{{ nv.HoTen }}</td>
+                <td>{{ luong.ThangNam }}</td>
+                <td>{{ luong.LuongCoBan }}</td>
+                <td>{{ luong.PhuCap }}</td>
+                <td>{{ luong.Thuong }}</td>
+                <td>{{ luong.KhauTru }}</td>
+                <td>{{ luong.LuongThucNhan }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="no-data">Không có dữ liệu bảng lương để hiển thị.</p>
+    {% endif %}
+    <a href="/" class="back-link">Quay về Trang Chủ</a>
+</body>
+</html>
